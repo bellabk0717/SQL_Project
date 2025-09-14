@@ -4,21 +4,21 @@
 This SQL exercise applies multiple analytical methods to explore coffee shop operations data in Southeast Asia.  
 本次 SQL 练习运用了多种分析方法，探索了东南亚咖啡店的运营数据。  
 ##Dataset | 数据集
-1.baristacoffeesalestbl
+- **1.baristacoffeesalestbl
 Sourced from https://www.kaggle.com/datasets/yashparab/barista-coffee-sales-data-for-eda-csv
-2.caffeine_intake_tracker
+- **2.caffeine_intake_tracker
 Sourced from https://www.kaggle.com/datasets/prekshad2166/caffeine-intake-tracker-csv
-3.coffeesales
+- **3.coffeesales
 Sourced from https://www.kaggle.com/datasets/visabelsarahsargunar/coffee-sales-dataset
 added columns:
 coffeeID
 shopID
 customer_id
-4.consumerpreference
+- **4.consumerpreference
 Sourced from https://datadryad.org/dataset/doi:10.25338/B8993H
-5.list_coffee_shops_in_kota_bogor
+- **5.list_coffee_shops_in_kota_bogor
 Sourced from https://www.kaggle.com/datasets/mrbuitenzorg/list-coffee-shops-in-kota-bogor
-6.top-rated-coffee
+- **6.top-rated-coffee
 Sourced from https://www.kaggle.com/datasets/asimmahmudov/top-rated-coffee
 
 ---
