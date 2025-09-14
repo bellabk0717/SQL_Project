@@ -1,9 +1,5 @@
-/*
-Name: LiYiping
-Matric: G2500424H
-*/
 
-#1. How many product categories are there? For each product category, show the number of records.
+//1. How many product categories are there? For each product category, show the number of records.
 --  Apply DISTINCT on the column first, then use COUNT to return the number of unique values.
 select count(distinct product_category)
 from baristacoffeesalestbl;
@@ -12,7 +8,7 @@ select product_category, count(product_category)
 from baristacoffeesalestbl
 group by product_category;
 
-#2.For each customer_gender and loyalty_member type, show the number of records. Within the same outcome, within each customer_gender and loyalty_member type, for each is_repeat_customer type, show the number of records.
+//2.For each customer_gender and loyalty_member type, show the number of records. Within the same outcome, within each customer_gender and loyalty_member type, for each is_repeat_customer type, show the number of records.
 -- Create the first table with 6 rows
 with group1 as (
     select customer_gender, loyalty_member, count(*) as total_records
@@ -39,7 +35,7 @@ group2 join group1
   on group1.customer_gender = group2.customer_gender 
   and group1.loyalty_member = group2.loyalty_member;
   
-#3.For each product_category and customer_discovery_source, display the sum of total_amount.
+//3.For each product_category and customer_discovery_source, display the sum of total_amount.
  -- B version
  select product_category, customer_discovery_source, sum(total_amount) as total_sales #直接计算
  from baristacoffeesalestbl
@@ -54,7 +50,7 @@ group by
     customer_discovery_source;
 -- I think B version is more correct, because A convert the result to DECIMAL with a 0 scale, which removes cents and loses financial precision.
 
-#4.Consider consuming coffee as the beverage, for each time_of_day category and gender, display the average focus_level and average sleep_quality.
+//4.Consider consuming coffee as the beverage, for each time_of_day category and gender, display the average focus_level and average sleep_quality.
 -- use WHERE AND to find every row that match the requirment and union them together.
 -- coffee, moring, female 
 select "morning" as time_of_day,"female" as gender, avg(convert(focus_level,decimal)), avg(convert(sleep_quality,decimal))
@@ -87,14 +83,14 @@ from caffeine_intake_tracker
 where time_of_day_evening='True' and gender_male = 'True' and beverage_coffee='True';
 
 
-#5.There are problems with the data in this table. List out the problematic records.
+//5.There are problems with the data in this table. List out the problematic records.
 -- Select the repeat records by using group by and having.
 select location_name, count(*)
 from list_coffee_shops_in_kota_bogor
 group by location_name
 having count(*)>1;
 
-#6.List the amount of spending (money) recorded before 12 and after 12
+//6.List the amount of spending (money) recorded before 12 and after 12
 -- In this dataset, the "datetime" column is problematic, so we need to take it into consideration.
 (select "before 12" as period, sum(convert(money,decimal(4,2))) as amt
 from
@@ -114,7 +110,7 @@ from coffeesales
 where the_hour >=12 and the_hour < 24
 );
 
-#7.For each category of Ph values, show the average Liking, FlavorIntensity, Acidity, and Mouthfeel
+//7.For each category of Ph values, show the average Liking, FlavorIntensity, Acidity, and Mouthfeel
 select '0 to 1' as Ph, convert(avg(Liking),decimal(4,2)) as avgLiking, convert(avg(FlavorIntensity),decimal(4,2)) as avgFlavorIntensity,convert(avg(Acidity),decimal(4,2)) as avgacidity, convert(avg(Mouthfeel),decimal(4,2)) as avgmouthfeel
 from consumerpreference
 where pH >= 0.0 and pH < 1.0
@@ -144,7 +140,7 @@ from consumerpreference
 where pH >= 6.0 and pH < 7.0;
 
 
-#8. After joining the 4 tables, for each trans_month (coffeesaeles.date), list the top 3 combinations of store_id (baristacoffeesalestbl) and shopID (coffeesales) based on the sum of money (coffeesales).
+//8. After joining the 4 tables, for each trans_month (coffeesaeles.date), list the top 3 combinations of store_id (baristacoffeesalestbl) and shopID (coffeesales) based on the sum of money (coffeesales).
 -- `top-rated-coffee`
 select
 -- Map numeric month to a 3-letter label for display
